@@ -34,12 +34,14 @@ public class PayPalService implements PayService{
 		
 			tempInstallment.setAmount(installMonth);
 			tempInstallment.setDueDate((contract.getDate().plusMonths(i)));
-			contract.installments.add(tempInstallment);
+			
+			contract.getInstallments().add(new Installment (contract.getDate().plusMonths(i),  installMonth));
 			
 			System.out.print((contract.getDate().plusMonths(i)).format(dtf) + 
 					" - " + 
 					String.format("%.2f", installMonth));
 			System.out.println();		
-		}	
+		}
+		System.out.println("-------------------");
 	}
 }

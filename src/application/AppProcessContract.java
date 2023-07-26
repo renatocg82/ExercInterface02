@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import model.entities.Contract;
+import model.entities.Installment;
 import model.entities.PayPalService;
 
 public class AppProcessContract {
@@ -36,7 +37,12 @@ public class AppProcessContract {
 		c1.setPayService(new PayPalService(c1, tempNumbInstallments));
 		
 		c1.getPayService().processContract(c1, tempNumbInstallments);
-		
+		System.out.println("---- Printing using class Installments: ----");
+		System.out.println("Installments: ");
+		for (Installment installment : c1.getInstallments() ) {
+			System.out.println(installment.getAmount() + " - " + installment.getDueDate().format(df));
+		}
+		System.out.println("-------------------");
 		sc.close();
 		scString.close();
 	}
